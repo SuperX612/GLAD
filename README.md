@@ -1,17 +1,21 @@
 # GLAD: Gradient Leakage Attacks in Federated Learning with Duplicate Labels
 ## Abstract
 
-GLAD, a gradient leakage attack (GLA) method, can reconstructe private training data in 30 seconds even under mainstream defense mechanisms (Additive Noise, Gradient Clipping,  Gradient Specification). GLAD addresses the challenge of duplicate labels for GLA, thus push the GLA more realistic.
+GLAD, a gradient leakage attack (GLA) method, can reconstruct private training data in 30 seconds even under mainstream defense mechanisms (additive noise, gradient clipping, gradient specification). GLAD addresses the challenge of duplicate labels for GLA, thus pushing the GLA more realistic.
+
+
 
 ## Overview
 
-The whole attack process can be composed of three phases as:
+The whole attack process can be composed of three phases:
 
 - Optimize the model output to minimize the loss term by optimization-based technology.
-- Seperate the feature map from the averaged gradients by the obtained model output.
-- Generate the private training data by inputting the separated feature map into the pre-trained generator which generates the data accoording to the feature map.
+- Separate the feature map from the averaged gradients by the obtained model output.
+- Generate the private training data by inputting the separated feature map into the pre-trained generator which generates the data according to the feature map.
 
 <img src="overview.png" alt="overview" style="zoom:30%;" />
+
+
 
 ##  The core code of GLAD
 
@@ -63,12 +67,16 @@ def Private_data_reconstrution(fcin, generator)
     return reimgs
 ```
 
+
+
 ## Simple Usage
 
 - Download the [trained generator](https://drive.google.com/file/d/1ZXaoF-3abmrjMwhIRLEg5ri05W5dMEQI/view?usp=sharing) and place it in "./savedModel/"
 - run main.py, and you can adjust the argument in main.py
 
-also you can train your generator by run TrainGeneratorGtoImg.py
+also, you can train your generator by running TrainGeneratorGtoImg.py
+
+
 
 ## Results
 
