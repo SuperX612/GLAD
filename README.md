@@ -1,7 +1,7 @@
 # GLAD: Gradient Leakage Attacks in Federated Learning with Duplicate Labels
 ## Abstract
 
-GLAD, a gradient leakage attack (GLA) method, can reconstructe private training data in 30 seconds even under mainstream defense mechanisms (Additive Noise, Gradient Clipping,  Gradient Specification). GLAD addresses the challenge of duplicate labels for GLA, thus push the GLA more realistic.
+GLAD, a gradient leakage attack (GLA) method, can reconstructe private training data in 30 seconds even under mainstream defense mechanisms (additive noise, gradient clipping,  gradient specification). GLAD addresses the challenge of duplicate labels for GLA, thus push the GLA more realistic.
 
 ## Overview
 
