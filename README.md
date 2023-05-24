@@ -29,21 +29,21 @@ def Model_output_leakage(grad, model)
     ydldy_target = torch.mm(grad[-2], model.fc.weight.data.transpose(0, -1))
     pred_modelloss = pred_loss(grad, label, batchsize, defence_method)
     pred_modelloss = pred_modelloss.detach().clone()
-        for iter in range(Iteration):
-            optimizer.zero_grad()
-            predloss = criterion(pred_modelPred, label)
-            predloss.backward(retain_graph=True)
-            dldy = pred_modelPred.grad
-            pred_dldy = dldy.detach().clone()
-            ydldy = torch.mm(dldy.transpose(0, -1), pred_modelPred - model.fc.bias.data)
-            w_loss = (ydldy - ydldy_target).pow(2).sum()
-            b_loss = (torch.sum(dldy, 0) - grad[-1]).pow(2).sum()
-            loss_loss = (predloss - pred_modelloss).pow(2).sum()
-            loss = 10000 * w_loss + b_loss + 100 * loss_loss
-            loss.backward()
-            optimizer.step()
-            if iter % 1000 == 0:
-                ExpLR.step()
+    for iter in range(Iteration):
+        optimizer.zero_grad()
+        predloss = criterion(pred_modelPred, label)
+        predloss.backward(retain_graph=True)
+        dldy = pred_modelPred.grad
+        pred_dldy = dldy.detach().clone()
+        ydldy = torch.mm(dldy.transpose(0, -1), pred_modelPred - model.fc.bias.data)
+        w_loss = (ydldy - ydldy_target).pow(2).sum()
+        b_loss = (torch.sum(dldy, 0) - grad[-1]).pow(2).sum()
+        loss_loss = (predloss - pred_modelloss).pow(2).sum()
+        loss = 10000 * w_loss + b_loss + 100 * loss_loss
+        loss.backward()
+        optimizer.step()
+        if iter % 1000 == 0:
+            ExpLR.step()
     return pred_dldy
 ```
 
