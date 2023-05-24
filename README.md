@@ -36,14 +36,9 @@ def Model_output_leakage(grad, model)
             dldy = pred_modelPred.grad
             pred_dldy = dldy.detach().clone()
             ydldy = torch.mm(dldy.transpose(0, -1), pred_modelPred - model.fc.bias.data)
-            # ydldy = defense("clipping", [ydldy], model, 0, label, 8)[0]
             w_loss = (ydldy - ydldy_target).pow(2).sum()
             b_loss = (torch.sum(dldy, 0) - grad[-1]).pow(2).sum()
             loss_loss = (predloss - pred_modelloss).pow(2).sum()
-            # w_loss = torch.abs(torch.mul(w_lambda, ydldy - ydldy_target)).sum()
-            # b_loss = torch.abs(torch.sum(dldy, 0) - grad[-1]).sum()
-            # loss_loss = torch.abs(predloss - pred_modelloss).sum()
-            # loss_loss = ((torch.abs(8.0 - predloss) + torch.abs(predloss - 6.0)) - torch.tensor(2.0)).pow(2)
             loss = 10000 * w_loss + b_loss + 100 * loss_loss
             loss.backward()
             optimizer.step()
