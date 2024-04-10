@@ -1,7 +1,7 @@
-# From Gradients to Pixels: A Gradients Inversion Attack by Inverting Cross-Entropy Loss Function
+# Gradient Leakage Attack against Duplicate Labels via Model Output Reconstruction
 ## Abstract
 
-RGLA, a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 pixels private training data of batch size 256 in 30 seconds while considering duplicate labels. RGLA addresses the challenge of high-resolution data and duplicate labels for GLAs, thus push the GLA more realistic. Extensive experiments demonstrate the robustness of RGLA to high resolution, duplicate labels, batch size, relatively strict defense methods, and initialization methods for the dummy model output.
+GLAD, a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 pixels private training data of batch size 256 in 30 seconds while considering duplicate labels. GLAD addresses the challenge of high-resolution data and duplicate labels for GLAs, thus push the GLA more realistic. Extensive experiments demonstrate the state-of-the-art ability and robustness of GLAD to high resolution, duplicate labels, batch size, relatively strict defense methods, and initialization methods for the dummy model output.
 
 
 
@@ -13,10 +13,10 @@ The whole attack process can be composed of three phases:
 - Disaggregate the feature map input into the last fully-connected layer from the averaged gradients by the obtained model output.
 - Generate the private training data by inputting the separated feature map into the pre-trained generator which generates the data according to the feature map.
 
-<img src="./readme_files/overview.png" alt="overview" style="zoom: 25%;" />
+<img src="./readme_files/overview.png" alt="overview" style="zoom: 50%;" />
 
 
- 
+
 ##  The core code of GLAD
 
 ```python
@@ -77,29 +77,23 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Comparison with the state-of-the-art methods
 
-<img src="./readme_files/compareexample.png" alt="compareexample" style="zoom: 25%;" />
+<img src="./readme_files/compareexample.png" alt="compareexample" style="zoom: 20%;" />
+
+- Reconstruct the data batch of 336$\times$336 pixels
+
+<img src="./readme_files/pixels336.png" alt="pixels336" style="zoom: 25%;" />
 
 - Reconstruct private training data with batch size of 256.
 
 <img src="./readme_files/256batchsize.png" alt="256batchsize" style="zoom: 25%;" />
 
+- Reconstruct private data from the datasets different from the auxiliary dataset
+
+   <img src=".\readme_files\cifar_celeba.png" alt="cifar_celeba" style="zoom: 40%;" />
+
+  
+
 - Reconstruct private training data against mainstream defense mechanisms.
 
-<img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 25%;" />
-
-- Ablation Study
-
-<img src="./readme_files/objective combination.png" alt="objective combination" style="zoom: 25%;" />
-
-- Evaluation of the different initialization methods for the dummy model output
-
-<img src="./readme_files/initial.png" alt="initial" style="zoom: 25%;" />
-
-- Reconstruction by inferred label [Ma K, Sun Y, Cui J, et al. Instance-wise Batch Label Restoration via Gradients in Federated Learning[C]//The Eleventh International Conference on Learning Representations. 2022.]
-
-<img src="./readme_files/inferredlabels.png" alt="inferredlabels" style="zoom: 25%;" />
-
-- Reconstruct the data batch of 336$\times$336 pixels
-
-<img src="./readme_files/pixels336.png" alt="pixels336" style="zoom: 25%;" />
+<img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 40%;" />
 

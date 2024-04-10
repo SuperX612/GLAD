@@ -11,7 +11,7 @@ from defense import gradient_clipping, defense
 from gen_attack import gen_attack_algorithm
 from iLRA import get_true_label
 from modellib import chooseAttackedModel, Generator
-from RGLA_algorithm import gen_attack_, generat_img
+from GLAD_algorithm import gen_attack_, generat_img
 from optim_attack import ig_algorithm, idlg_algorithm
 from optim_attack.dlg import dlg_algorithm
 from optim_attack.ggl_mulbatch import ggl_algorithm
@@ -21,10 +21,10 @@ from dataset import get_dataloader
 
 def parse_args():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--model_weights", help="weights path for generator", default="./savedModel/RGLA_generator_224.pth") # ./record/train_generator/exp_0/weights_6.pth, ./savedModel/gen_weights.pth
+    parser.add_argument("--model_weights", help="weights path for generator", default="./savedModel/GLAD_generator_224.pth") # ./record/train_generator/exp_0/weights_6.pth, ./savedModel/gen_weights.pth
     parser.add_argument("--fgla_modelpath", help="", default="./savedModel/FGLA_generator.pth")
     parser.add_argument("--reconstruct_num", help="number of reconstructed batches", default=1, type=int)
-    parser.add_argument("--algorithm", default="RGLA", choices=["dlg", "ig", "ggl", "fgla", "RGLA"])
+    parser.add_argument("--algorithm", default="GLAD", choices=["dlg", "ig", "ggl", "fgla", "GLAD"])
     parser.add_argument("--dataset", help="dataset used to reconstruct", default="cifar100", choices=["imagenet", "celeba", "cifar100"])
     parser.add_argument("--max_iteration", help="iteration to reconstruct", default=1, type=int)
     parser.add_argument("--reconstructPath", help="experiment name used to create folder", default="./record/reconstruct")
@@ -120,7 +120,7 @@ if __name__ == "__main__":
         ssim = ssim_lossfn(dummy_x, x)
         lpips = lpips_lossfn(dummy_x, x)
         if args.save_rec:
-            if args.algorithm == "RGLA":
+            if args.algorithm == "GLAD":
                 save_history(index, predloss, psnr, ssim, lpips, time.time() - start, f"{record_dir}")
             else:
                 save_history(index, 0, psnr, ssim, lpips, time.time() - start, f"{record_dir}")
