@@ -13,7 +13,7 @@ The whole attack process can be composed of three phases:
 - Disaggregate the feature map input into the last fully-connected layer from the averaged gradients by the obtained model output.
 - Generate the private training data by inputting the separated feature map into the pre-trained generator which generates the data according to the feature map.
 
-<img src="./readme_files/overview.png" alt="overview" style="zoom: 50%;" />
+<img src="./readme_files/overview.png" alt="overview" style="zoom: 10%;" />
 
 
 
@@ -77,7 +77,7 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Comparison with the state-of-the-art methods
 
-<img src="./readme_files/compareexample.png" alt="compareexample" style="zoom: 20%;" />
+<img src="./readme_files/compareexample.png" alt="compareexample" style="zoom: 25%;" />
 
 - Reconstruct the data batch of 336$\times$336 pixels
 
@@ -89,11 +89,11 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Reconstruct private data from the datasets different from the auxiliary dataset
 
-   <img src=".\readme_files\cifar_celeba.png" alt="cifar_celeba" style="zoom: 40%;" />
+   <img src=".\readme_files\cifar_celeba.png" alt="cifar_celeba" style="zoom: 55%;" />
 
   
 
 - Reconstruct private training data against mainstream defense mechanisms.
 
-<img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 40%;" />
+<img src="./readme_files/readmeimg2.png" alt="readmeimg2" style="zoom: 30%;" />
 
