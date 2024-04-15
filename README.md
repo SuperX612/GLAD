@@ -1,4 +1,4 @@
-# Gradient Leakage Attack against Duplicate Labels via Model Output Reconstruction
+# Gradient Leakage Attack against Duplicate Labels via Model Outputs Reconstruction
 ## Abstract
 
 GLAD, a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 pixels private training data of batch size 256 in 30 seconds while considering duplicate labels. GLAD addresses the challenge of high-resolution data and duplicate labels for GLAs, thus push the GLA more realistic. Extensive experiments demonstrate the state-of-the-art ability and robustness of GLAD to high resolution, duplicate labels, batch size, relatively strict defense methods, and initialization methods for the dummy model output.
@@ -9,9 +9,8 @@ GLAD, a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 p
 
 The whole attack process can be composed of three phases:
 
-- Optimize the model output to invert cross-entropy by optimization-based technology.
-- Disaggregate the feature map input into the last fully-connected layer from the averaged gradients by the obtained model output.
-- Generate the private training data by inputting the separated feature map into the pre-trained generator which generates the data according to the feature map.
+- Reconstruct the model outputs by optimization-based technology.
+- Invert the obtained model outputs back to the model inputs.
 
 <img src="./readme_files/overview.png" alt="overview" style="zoom: 10%;" />
 
