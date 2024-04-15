@@ -88,9 +88,8 @@ also, you can train your generator by running TrainGeneratorGtoImg.py
 
 - Reconstruct private data from the datasets different from the auxiliary dataset
 
-   <img src=".\readme_files\cifar_celeba.png" alt="cifar_celeba" style="zoom: 55%;" />
+<img src=".\readme_files\cifar_celeba.png" alt="cifar_celeba" style="zoom: 55%;" />
 
-  
 
 - Reconstruct private training data against mainstream defense mechanisms.
 
