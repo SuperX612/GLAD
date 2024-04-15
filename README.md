@@ -10,7 +10,7 @@ GLAD, a gradient leakage attack (GLA) method, can reconstruct 224 $\times$ 224 p
 The whole attack process can be composed of three phases:
 
 - Reconstruct the model outputs by optimization-based technology.
-- Invert the obtained model outputs back to the model inputs.
+- Invert the obtained model outputs back to the model inputs
 
 <img src="./readme_files/overview.png" alt="overview" style="zoom: 10%;" />
 
